@@ -1199,53 +1199,62 @@
           </div>
 
           <div class="contact-grid">
-            <form
-              class="contact-form"
-              action="mailto:rakhmatullokh.kh@gmail.com"
-              method="post"
-              enctype="text/plain"
-            >
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="name">Name / Ism / 姓名</label>
-                  <input id="name" name="Name" type="text" placeholder="Your name" required />
-                </div>
-                <div class="form-group">
-                  <label for="email">Email / Elektron pochta</label>
-                  <input
-                    id="email"
-                    name="Email"
-                    type="email"
-                    placeholder="your@email.com"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="topic">Topic / Mavzu</label>
-                <input
-                  id="topic"
-                  name="Topic"
-                  type="text"
-                  placeholder="Research, studying in China, collaboration, etc."
-                />
-              </div>
-              <div class="form-group">
-                <label for="message">Message / Xabar / 留言</label>
-                <textarea
-                  id="message"
-                  name="Message"
-                  placeholder="You can write in English, Uzbek or Chinese."
-                ></textarea>
-              </div>
-              <button class="btn-primary" type="submit">
-                Send email →
-              </button>
-              <p class="hero-note" style="margin-top:8px;">
-                This form uses a simple <strong>mailto:</strong> link — no server or paid hosting is
-                required.
-              </p>
-            </form>
+<form
+  class="contact-form"
+  action="https://formspree.io/f/xwpgrngk"
+  method="POST"
+>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="name">Name / Ism / 姓名</label>
+      <input id="name" name="Name" type="text" placeholder="Your name" required />
+    </div>
+    <div class="form-group">
+      <label for="email">Email / Elektron pochta</label>
+      <input
+        id="email"
+        name="Email"
+        type="email"
+        placeholder="your@email.com"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="topic">Topic / Mavzu</label>
+    <input
+      id="topic"
+      name="Topic"
+      type="text"
+      placeholder="Research, studying in China, collaboration, etc."
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="message">Message / Xabar / 留言</label>
+    <textarea
+      id="message"
+      name="Message"
+      placeholder="You can write in English, Uzbek or Chinese."
+      required
+    ></textarea>
+  </div>
+
+  <!-- Email subject in your inbox -->
+  <input type="hidden" name="_subject" value="New message from Portfolio Website" />
+
+  <!-- Disable spam bots -->
+  <input type="text" name="_gotcha" style="display:none">
+
+  <button class="btn-primary" type="submit">
+    Send message →
+  </button>
+
+  <p class="hero-note" style="margin-top:8px;">
+    This form is powered by <strong>Formspree</strong> — messages are delivered directly to my inbox.
+  </p>
+</form>
 
             <aside class="contact-info-card">
               <div class="contact-info-item">
