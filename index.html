@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Name | Professional Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.12);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --card-bg: rgba(15, 23, 42, 0.9);
+      --border: rgba(148, 163, 184, 0.3);
+      --radius-lg: 18px;
+      --radius-xl: 28px;
+      --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.65);
+      --shadow-soft-sm: 0 14px 35px rgba(15, 23, 42, 0.8);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 52%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 16px 64px;
+    }
+
+    /* Glassy card look */
+    .card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), #020617);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -80%;
+      background:
+        radial-gradient(circle at 10% 0, rgba(56, 189, 248, 0.18), transparent 50%),
+        radial-gradient(circle at 100% 0, rgba(129, 140, 248, 0.16), transparent 55%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: conic-gradient(from 210deg, #4f46e5, #06b6d4, #22c55e, #4f46e5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.45);
+    }
+
+    .logo-inner {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 0 0, #e5e7eb, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: #e5e7eb;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 16px;
+    }
+
+    .brand-tagline {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: all 0.18s ease-out;
+      border: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.75);
+    }
+
+    .nav-cta {
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #4f46e5, #22c55e);
+      color: #f9fafb;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 12px 30px rgba(34, 197, 94, 0.45);
+    }
+
+    .nav-cta span {
+      font-size: 16px;
+      transform: translateY(0.5px);
+    }
+
+    /* Mobile nav */
+    .nav-mobile-toggle {
+      display: none;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.7);
+      font-size: 13px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .nav-mobile-menu {
+      display: none;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      gap: 8px;
+      flex-direction: column;
+      font-size: 13px;
+    }
+
+    .nav-mobile-menu a {
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+    }
+
+    .nav-mobile-menu a:hover {
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.3fr);
+      gap: 24px;
+      margin-bottom: 32px;
+      margin-top: 6px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(129, 140, 248, 0.55);
+      color: #c7d2fe;
+      margin-bottom: 10px;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.3);
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 5vw, 34px);
+      line-height: 1.15;
+      font-weight: 750;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #e5e7eb, #a5b4fc, #6ee7b7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      max-width: 90%;
+    }
+
+    .hero-subtitle strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 11px;
+    }
+
+    .tag-pill {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .tag-pill span {
+      font-size: 14px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .btn-primary {
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      color: #f9fafb;
+      box-shadow: 0 14px 40px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn-secondary {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--muted);
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-note strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    /* Hero visual card */
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-visual-inner {
+      position: relative;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top, #111827, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: var(--shadow-soft-sm);
+      padding: 18px 16px 16px;
+      min-height: 220px;
+      overflow: hidden;
+    }
+
+    .hero-visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .status-pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(52, 211, 153, 0.7);
+      color: #6ee7b7;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(6, 95, 70, 0.25);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.35);
+    }
+
+    .hero-chart {
+      margin-top: 6px;
+      position: relative;
+      padding: 8px;
+      border-radius: 14px;
+      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.4), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.35), transparent 55%);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      height: 90px;
+      align-items: flex-end;
+    }
+
+    .chart-bar {
+      border-radius: 999px;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.95), rgba(148, 163, 184, 0.15));
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chart-bar-fill {
+      position: absolute;
+      inset: auto 0 0;
+      border-radius: 999px;
+      background: linear-gradient(to top, #22c55e, #38bdf8);
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.6);
+    }
+
+    .chart-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 6px;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .hero-stat-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 12px;
+      font-size: 11px;
+    }
+
+    .hero-stat {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.65);
+    }
+
+    .hero-stat-label {
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .hero-stat-value {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 650;
+      letter-spacing: 0.03em;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 70%;
+    }
+
+    /* About grid */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+      gap: 18px;
+    }
+
+    .about-card {
+      background: rgba(15, 23, 42, 0.88);
+      border-radius: var(--radius-lg);
+      padding: 14px 14px 12px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .about-card h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .about-card p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .about-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    .about-pill {
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .about-pill span {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .about-pill strong {
+      font-size: 12px;
+    }
+
+    /* Cards grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .service-card,
+    .project-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 12px 12px 10px;
+      font-size: 13px;
+    }
+
+    .service-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .service-card h3 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .chip {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .project-card h3 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .project-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .link-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: #a5b4fc;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+      gap: 18px;
+    }
+
+    .contact-form {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 14px 14px 12px;
+      font-size: 13px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 8px;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px 9px;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text);
+      font-size: 13px;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.4);
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .contact-info-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 14px 14px 10px;
+      font-size: 13px;
+    }
+
+    .contact-info-item {
+      margin-bottom: 8px;
+    }
+
+    .contact-info-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 2px;
+    }
+
+    .contact-info-value {
+      font-size: 13px;
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .social-pill {
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.75);
+      font-size: 11px;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 8px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    footer strong {
+      color: #e5e7eb;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero,
+      .about-grid,
+      .cards-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-subtitle {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .page {
+        padding-inline: 12px;
+      }
+
+      .navbar {
+        align-items: flex-start;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-mobile-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .hero {
+        margin-top: 4px;
+      }
+
+      .hero-subtitle {
+        max-width: 100%;
+      }
+
+      .cards-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .form-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-visual-inner {
+        min-height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="card-inner">
+        <!-- Navbar -->
+        <header class="navbar">
+          <div class="brand">
+            <div class="logo-circle">
+              <div class="logo-inner">R</div>
+            </div>
+            <div class="brand-text">
+              <div class="brand-name">Your Name</div>
+              <div class="brand-tagline">Student · Creator · Founder</div>
+            </div>
+          </div>
+          <nav class="nav-links">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <button class="nav-cta" onclick="scrollToSection('contact')">
+              Let’s work together <span>⚡</span>
+            </button>
+          </nav>
+          <button class="nav-mobile-toggle" onclick="toggleMobileNav()">
+            Menu ▾
+          </button>
+        </header>
+
+        <div id="nav-mobile-menu" class="nav-mobile-menu">
+          <a href="#about" onclick="toggleMobileNav()">About</a>
+          <a href="#services" onclick="toggleMobileNav()">Services</a>
+          <a href="#projects" onclick="toggleMobileNav()">Projects</a>
+          <a href="#contact" onclick="toggleMobileNav()">Contact</a>
+          <a href="#contact" onclick="toggleMobileNav()">Let’s work together ⚡</a>
+        </div>
+
+        <!-- Hero -->
+        <main class="hero">
+          <div>
+            <div class="eyebrow">
+              <div class="eyebrow-dot"></div>
+              AVAILABLE FOR REMOTE COLLABS
+            </div>
+            <h1 class="hero-title">
+              Building <span class="hero-gradient">clean, modern websites</span><br />
+              and digital identities that stand out.
+            </h1>
+            <p class="hero-subtitle">
+              I’m <strong>Your Name</strong>, a pharmacy student, content creator and aspiring founder,
+              helping people and brands look professional online — even with a student budget.
+            </p>
+            <div class="hero-tags">
+              <div class="tag-pill">
+                <span>💊</span> Pharmacy & biotech
+              </div>
+              <div class="tag-pill">
+                <span>🌏</span> Study in China & scholarships
+              </div>
+              <div class="tag-pill">
+                <span>🧪</span> Research & posters
+              </div>
+              <div class="tag-pill">
+                <span>💻</span> Web & personal branding
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="btn-primary" onclick="scrollToSection('contact')">
+                Get a free website link →
+              </button>
+              <button class="btn-secondary" onclick="scrollToSection('projects')">
+                View projects & posters
+              </button>
+            </div>
+            <p class="hero-note">
+              <strong>No paid domain needed:</strong> I host projects on free platforms
+              (like Netlify & GitHub Pages) so anyone can open them worldwide.
+            </p>
+          </div>
+
+          <!-- Hero visual side -->
+          <aside class="hero-visual">
+            <div class="hero-visual-inner">
+              <div class="hero-visual-header">
+                <span>Portfolio analytics</span>
+                <span>Last 12 months</span>
+              </div>
+              <div class="hero-chart">
+                <div class="chart-grid">
+                  <div class="chart-bar">
+                    <div class="chart-bar-fill" style="height: 30%;"></div>
+                  </div>
+                  <div class="chart-bar">
+                    <div class="chart-bar-fill" style="height: 55%;"></div>
+                  </div>
+                  <div class="chart-bar">
+                    <div class="chart-bar-fill" style="height: 75%;"></div>
+                  </div>
+                  <div class="chart-bar">
+                    <div class="chart-bar-fill" style="height: 100%;"></div>
+                  </div>
+                </div>
+                <div class="chart-labels">
+                  <span>2022</span>
+                  <span>2023</span>
+                  <span>2024</span>
+                  <span>2025</span>
+                </div>
+              </div>
+              <div class="hero-stat-row">
+                <div class="hero-stat">
+                  <div class="hero-stat-label">Website & poster views</div>
+                  <div class="hero-stat-value">25,000+ impressions</div>
+                </div>
+                <div class="hero-stat">
+                  <div class="hero-stat-label">Collaborations</div>
+                  <div class="hero-stat-value">15+ projects shipped</div>
+                </div>
+              </div>
+              <div class="hero-stat-row">
+                <div class="hero-stat">
+                  <div class="hero-stat-label">Countries reached</div>
+                  <div class="hero-stat-value">10+ via online content</div>
+                </div>
+                <div class="hero-stat">
+                  <div class="hero-stat-label">Response time</div>
+                  <div class="hero-stat-value">&lt; 24 hours on weekdays</div>
+                </div>
+              </div>
+            </div>
+            <div class="status-pill" style="position:absolute;bottom:-8px;right:10px;">
+              <div class="status-dot"></div>
+              Portfolio site: Online & updated
+            </div>
+          </aside>
+        </main>
+
+        <!-- About -->
+        <section id="about">
+          <div class="section-header">
+            <div>
+              <div class="section-kicker">ABOUT</div>
+              <h2 class="section-title">Who I am & what I do</h2>
+            </div>
+            <p class="section-subtitle">
+              A quick overview of my background, my current projects and how I combine
+              pharmacy, research, content creation and tech.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-card">
+              <h3>Short bio</h3>
+              <p>
+                I am a pharmacy student in China with a strong interest in
+                microbiology, bacteriophages and modern pharmaceutical practice.
+                At the same time I create online content about studying in China
+                and help students navigate scholarships and university life.
+              </p>
+              <p style="margin-top:6px;">
+                I enjoy turning complex scientific ideas into clear visuals,
+                posters and websites — so people without a scientific background
+                can still understand the core message.
+              </p>
+            </div>
+            <div class="about-card">
+              <h3>Snapshot</h3>
+              <div class="about-list">
+                <div class="about-pill">
+                  <span>Major</span>
+                  <strong>Pharmacy</strong>
+                </div>
+                <div class="about-pill">
+                  <span>Location</span>
+                  <strong>Nanjing / Online</strong>
+                </div>
+                <div class="about-pill">
+                  <span>Languages</span>
+                  <strong>Uzbek · English · Chinese</strong>
+                </div>
+                <div class="about-pill">
+                  <span>Focus</span>
+                  <strong>Bacteriophages & education</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services">
+          <div class="section-header">
+            <div>
+              <div class="section-kicker">SERVICES</div>
+              <h2 class="section-title">How I can help you</h2>
+            </div>
+            <p class="section-subtitle">
+              From simple “link-in-bio” pages to polished mini-sites for products,
+              research posters or education projects — all done with free hosting.
+            </p>
+          </div>
+
+          <div class="cards-grid">
+            <article class="service-card">
+              <div class="service-icon">💻</div>
+              <h3>Personal & portfolio sites</h3>
+              <p>
+                Single-page or multi-section portfolio sites hosted on free
+                platforms like Netlify or GitHub Pages.
+              </p>
+              <div class="pill-row">
+                <span class="chip">Responsive design</span>
+                <span class="chip">Fast & lightweight</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">🧪</div>
+              <h3>Project & product pages</h3>
+              <p>
+                Simple, clear pages to present supplements, bacteriophage
+                products or research projects for conferences and partners.
+              </p>
+              <div class="pill-row">
+                <span class="chip">Structured sections</span>
+                <span class="chip">Science-friendly</span>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">📚</div>
+              <h3>Study & scholarship pages</h3>
+              <p>
+                Landing pages for consulting, study-in-China guidance or
+                Telegram channels — with clear calls to action.
+              </p>
+              <div class="pill-row">
+                <span class="chip">Funnel-ready</span>
+                <span class="chip">Multi-language</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+          <div class="section-header">
+            <div>
+              <div class="section-kicker">PROJECTS</div>
+              <h2 class="section-title">Selected projects & ideas</h2>
+            </div>
+            <p class="section-subtitle">
+              A few examples of the type of work I like to do. These can be real
+              or upcoming — feel free to replace everything with your own projects.
+            </p>
+          </div>
+
+          <div class="cards-grid">
+            <article class="project-card">
+              <h3>Mediphage mini-site</h3>
+              <div class="project-meta">
+                Informational site structure for bacteriophage-based supplements with
+                clear indication, safety and FAQ sections.
+              </div>
+              <div class="pill-row">
+                <span class="chip">Science copy</span>
+                <span class="chip">Clear layout</span>
+              </div>
+              <div class="project-footer">
+                <span>Ready to build</span>
+                <a href="#contact" class="link-inline">Let’s launch it →</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <h3>“Study in China” landing</h3>
+              <div class="project-meta">
+                Simple funnel page to collect leads for scholarship consulting
+                with Telegram, WeChat and email entry points.
+              </div>
+              <div class="pill-row">
+                <span class="chip">Lead capture</span>
+                <span class="chip">Student-focused</span>
+              </div>
+              <div class="project-footer">
+                <span>Concept & structure</span>
+                <a href="#contact" class="link-inline">Use for your brand →</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <h3>Research poster companion</h3>
+              <div class="project-meta">
+                A tiny website that mirrors the content of a scientific poster
+                (IPSAF, etc.) with extra figures, methods and links.
+              </div>
+              <div class="pill-row">
+                <span class="chip">Conference-ready</span>
+                <span class="chip">QR code friendly</span>
+              </div>
+              <div class="project-footer">
+                <span>Poster + web pair</span>
+                <a href="#contact" class="link-inline">Create yours →</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+          <div class="section-header">
+            <div>
+              <div class="section-kicker">CONTACT</div>
+              <h2 class="section-title">Let’s build something together</h2>
+            </div>
+            <p class="section-subtitle">
+              Tell me what kind of website you need — portfolio, product, study
+              page or something else — and I’ll structure it to work on free hosting.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <form
+              class="contact-form"
+              action="mailto:your-email@example.com"
+              method="post"
+              enctype="text/plain"
+            >
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input id="name" name="Name" type="text" placeholder="Your name" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    name="Email"
+                    type="email"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="type">Project type</label>
+                <input
+                  id="type"
+                  name="Project type"
+                  type="text"
+                  placeholder="Portfolio, product page, study page, etc."
+                />
+              </div>
+              <div class="form-group">
+                <label for="message">What do you have in mind?</label>
+                <textarea
+                  id="message"
+                  name="Message"
+                  placeholder="Briefly describe your idea, timeline and any links you already have."
+                ></textarea>
+              </div>
+              <button class="btn-primary" type="submit">
+                Send message via email →
+              </button>
+              <p class="hero-note" style="margin-top:8px;">
+                This form uses a simple <strong>mailto:</strong> link so you
+                don’t need any paid server or backend.
+              </p>
+            </form>
+
+            <aside class="contact-info-card">
+              <div class="contact-info-item">
+                <div class="contact-info-label">DIRECT CONTACT</div>
+                <div class="contact-info-value">
+                  Email: <strong>your-email@example.com</strong><br />
+                  Telegram / WeChat: <strong>@yourhandle</strong>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-info-label">TIME ZONE</div>
+                <div class="contact-info-value">
+                  Based in Asia, open to fully remote collaborations.
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-info-label">SOCIAL</div>
+                <div class="social-row">
+                  <span class="social-pill">Telegram channel: Xitoyda Hayot</span>
+                  <span class="social-pill">Instagram: @yourusername</span>
+                  <span class="social-pill">LinkedIn: Your Name</span>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-info-label">NOTE</div>
+                <div class="contact-info-value">
+                  I’m building my career step by step — if you’re also a student or
+                  early-stage founder, I’d love to collaborate and grow together.
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+          <span>© <strong>Your Name</strong> — All rights reserved.</span>
+          <span>Built with HTML &amp; CSS, hosted for free.</span>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function toggleMobileNav() {
+      const menu = document.getElementById("nav-mobile-menu");
+      if (!menu) return;
+      const isVisible = menu.style.display === "flex";
+      menu.style.display = isVisible ? "none" : "flex";
+    }
+  </script>
+</body>
+</html>
