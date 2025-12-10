@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Your Name | Professional Portfolio</title>
+  <title>Rakhmatullokh Kakhramonov | Pharmacy Student & Researcher</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Official portfolio of Rakhmatullokh Kakhramonov (李强) – pharmacy student, researcher and content creator based in China."
+  />
   <style>
     :root {
       --bg: #050816;
@@ -46,14 +50,12 @@
       display: block;
     }
 
-    /* Layout */
     .page {
       max-width: 1120px;
       margin: 0 auto;
       padding: 20px 16px 64px;
     }
 
-    /* Glassy card look */
     .card {
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), #020617);
       border-radius: var(--radius-xl);
@@ -177,7 +179,6 @@
       transform: translateY(0.5px);
     }
 
-    /* Mobile nav */
     .nav-mobile-toggle {
       display: none;
       padding: 6px 10px;
@@ -261,13 +262,19 @@
     .hero-subtitle {
       font-size: 14px;
       color: var(--muted);
-      margin-bottom: 16px;
+      margin-bottom: 8px;
       max-width: 90%;
     }
 
     .hero-subtitle strong {
       color: #e5e7eb;
       font-weight: 600;
+    }
+
+    .hero-subtitle-alt {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
     }
 
     .hero-tags {
@@ -298,7 +305,7 @@
       flex-wrap: wrap;
       gap: 10px;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .btn-primary {
@@ -339,7 +346,6 @@
       font-weight: 500;
     }
 
-    /* Hero visual card */
     .hero-visual {
       position: relative;
     }
@@ -461,6 +467,7 @@
       align-items: baseline;
       justify-content: space-between;
       margin-bottom: 12px;
+      gap: 16px;
     }
 
     .section-title {
@@ -476,13 +483,19 @@
       letter-spacing: 0.16em;
     }
 
+    .section-kicker-alt {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
     .section-subtitle {
       font-size: 13px;
       color: var(--muted);
       max-width: 70%;
     }
 
-    /* About grid */
+    /* About */
     .about-grid {
       display: grid;
       grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
@@ -494,6 +507,7 @@
       border-radius: var(--radius-lg);
       padding: 14px 14px 12px;
       border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 13px;
     }
 
     .about-card h3 {
@@ -541,8 +555,13 @@
       gap: 14px;
     }
 
-    .service-card,
-    .project-card {
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card-simple {
       background: rgba(15, 23, 42, 0.9);
       border-radius: var(--radius-lg);
       border: 1px solid rgba(148, 163, 184, 0.7);
@@ -550,26 +569,14 @@
       font-size: 13px;
     }
 
-    .service-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      margin-bottom: 8px;
-    }
-
-    .service-card h3 {
+    .card-simple h3 {
       font-size: 14px;
       margin-bottom: 4px;
     }
 
-    .service-card p {
+    .card-simple p {
+      font-size: 13px;
       color: var(--muted);
-      margin-bottom: 8px;
     }
 
     .pill-row {
@@ -578,6 +585,7 @@
       gap: 6px;
       font-size: 11px;
       color: var(--muted);
+      margin-top: 6px;
     }
 
     .chip {
@@ -587,13 +595,8 @@
       border: 1px solid rgba(148, 163, 184, 0.6);
     }
 
-    .project-card h3 {
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
-
     .project-meta {
-      font-size: 11px;
+      font-size: 12px;
       color: var(--muted);
       margin-bottom: 6px;
     }
@@ -733,7 +736,8 @@
       .hero,
       .about-grid,
       .cards-grid,
-      .contact-grid {
+      .contact-grid,
+      .two-col-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
@@ -799,17 +803,18 @@
               <div class="logo-inner">R</div>
             </div>
             <div class="brand-text">
-              <div class="brand-name">Your Name</div>
-              <div class="brand-tagline">Student · Creator · Founder</div>
+              <div class="brand-name">Rakhmatullokh Kakhramonov</div>
+              <div class="brand-tagline">Pharmacy · Research · Content</div>
             </div>
           </div>
           <nav class="nav-links">
             <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#projects">Projects</a>
+            <a href="#research">Research</a>
+            <a href="#skills">Skills</a>
+            <a href="#awards">Awards</a>
             <a href="#contact">Contact</a>
             <button class="nav-cta" onclick="scrollToSection('contact')">
-              Let’s work together <span>⚡</span>
+              Let’s connect <span>✉️</span>
             </button>
           </nav>
           <button class="nav-mobile-toggle" onclick="toggleMobileNav()">
@@ -819,10 +824,10 @@
 
         <div id="nav-mobile-menu" class="nav-mobile-menu">
           <a href="#about" onclick="toggleMobileNav()">About</a>
-          <a href="#services" onclick="toggleMobileNav()">Services</a>
-          <a href="#projects" onclick="toggleMobileNav()">Projects</a>
+          <a href="#research" onclick="toggleMobileNav()">Research</a>
+          <a href="#skills" onclick="toggleMobileNav()">Skills</a>
+          <a href="#awards" onclick="toggleMobileNav()">Awards</a>
           <a href="#contact" onclick="toggleMobileNav()">Contact</a>
-          <a href="#contact" onclick="toggleMobileNav()">Let’s work together ⚡</a>
         </div>
 
         <!-- Hero -->
@@ -830,41 +835,55 @@
           <div>
             <div class="eyebrow">
               <div class="eyebrow-dot"></div>
-              AVAILABLE FOR REMOTE COLLABS
+              PHARMACY STUDENT · RESEARCHER · CONTENT CREATOR
             </div>
             <h1 class="hero-title">
-              Building <span class="hero-gradient">clean, modern websites</span><br />
-              and digital identities that stand out.
+              <span class="hero-gradient">Rakhmatullokh Kakhramonov</span><br />
+              <span style="font-size: 0.8em; font-weight: 500; opacity: 0.9;">李强 · Li Qiang</span>
             </h1>
             <p class="hero-subtitle">
-              I’m <strong>Your Name</strong>, a pharmacy student, content creator and aspiring founder,
-              helping people and brands look professional online — even with a student budget.
+              I am a <strong>pharmacy student based in China</strong>, interested in
+              <strong>Alzheimer’s disease, bacteriophages and modern pharmaceutical practice</strong>.
+              I also create educational content about studying in China and scholarships.
             </p>
+            <p class="hero-subtitle-alt">
+              Men Xitoyda farmatsiya yo‘nalishida tahsil olayotgan talabayman. Asosiy qiziqishlarim —
+              Alzheimer kasalligi, bakteriofaglar va farmatsiya amaliyoti. Shu bilan birga, Xitoyda ta’lim
+              va grantlar haqida kontent yarataman.
+            </p>
+            <p class="hero-subtitle-alt">
+              我是在中国就读的药学专业学生，对阿尔茨海默病、噬菌体以及现代药学实践很感兴趣，
+              也分享关于在中国学习和奖学金申请的经验。
+            </p>
+
             <div class="hero-tags">
               <div class="tag-pill">
-                <span>💊</span> Pharmacy & biotech
+                <span>💊</span> Pharmacy & therapeutics
               </div>
               <div class="tag-pill">
-                <span>🌏</span> Study in China & scholarships
+                <span>🧠</span> Alzheimer’s & small molecules
               </div>
               <div class="tag-pill">
-                <span>🧪</span> Research & posters
+                <span>🧪</span> Bacteriophages & supplements
               </div>
               <div class="tag-pill">
-                <span>💻</span> Web & personal branding
+                <span>🌏</span> Study in China guidance
               </div>
             </div>
+
             <div class="hero-actions">
-              <button class="btn-primary" onclick="scrollToSection('contact')">
-                Get a free website link →
-              </button>
-              <button class="btn-secondary" onclick="scrollToSection('projects')">
-                View projects & posters
+              <!-- TODO: change href to your real CV file path -->
+              <a class="btn-primary" href="cv/Rakhmatullokh_Kakhramonov_CV.pdf" download>
+                Download CV (PDF) →
+              </a>
+              <button class="btn-secondary" onclick="scrollToSection('research')">
+                View research & projects
               </button>
             </div>
+
             <p class="hero-note">
-              <strong>No paid domain needed:</strong> I host projects on free platforms
-              (like Netlify & GitHub Pages) so anyone can open them worldwide.
+              <strong>Languages:</strong> Uzbek · English · 中文（Chinese） |
+              <strong>Website:</strong> built with HTML &amp; CSS, hosted free on GitHub Pages.
             </p>
           </div>
 
@@ -872,8 +891,8 @@
           <aside class="hero-visual">
             <div class="hero-visual-inner">
               <div class="hero-visual-header">
-                <span>Portfolio analytics</span>
-                <span>Last 12 months</span>
+                <span>Academic trajectory</span>
+                <span>Updated: 2025</span>
               </div>
               <div class="hero-chart">
                 <div class="chart-grid">
@@ -899,28 +918,28 @@
               </div>
               <div class="hero-stat-row">
                 <div class="hero-stat">
-                  <div class="hero-stat-label">Website & poster views</div>
-                  <div class="hero-stat-value">25,000+ impressions</div>
+                  <div class="hero-stat-label">Research & poster viewership</div>
+                  <div class="hero-stat-value">10,000+ combined impressions</div>
                 </div>
                 <div class="hero-stat">
-                  <div class="hero-stat-label">Collaborations</div>
-                  <div class="hero-stat-value">15+ projects shipped</div>
+                  <div class="hero-stat-label">Competitions & forums</div>
+                  <div class="hero-stat-value">National & international participation</div>
                 </div>
               </div>
               <div class="hero-stat-row">
                 <div class="hero-stat">
-                  <div class="hero-stat-label">Countries reached</div>
-                  <div class="hero-stat-value">10+ via online content</div>
+                  <div class="hero-stat-label">Collaboration scope</div>
+                  <div class="hero-stat-value">Students, labs & companies</div>
                 </div>
                 <div class="hero-stat">
-                  <div class="hero-stat-label">Response time</div>
-                  <div class="hero-stat-value">&lt; 24 hours on weekdays</div>
+                  <div class="hero-stat-label">Communication</div>
+                  <div class="hero-stat-value">Trilingual: Uzbek · English · Chinese</div>
                 </div>
               </div>
             </div>
             <div class="status-pill" style="position:absolute;bottom:-8px;right:10px;">
               <div class="status-dot"></div>
-              Portfolio site: Online & updated
+              Portfolio: online & continuously updated
             </div>
           </aside>
         </main>
@@ -930,11 +949,14 @@
           <div class="section-header">
             <div>
               <div class="section-kicker">ABOUT</div>
-              <h2 class="section-title">Who I am & what I do</h2>
+              <div class="section-kicker-alt">
+                关于我 · Men haqimda
+              </div>
+              <h2 class="section-title">Background & current focus</h2>
             </div>
             <p class="section-subtitle">
-              A quick overview of my background, my current projects and how I combine
-              pharmacy, research, content creation and tech.
+              A brief overview of my academic path, interests and how I combine
+              pharmacy, research and educational content creation.
             </p>
           </div>
 
@@ -942,15 +964,17 @@
             <div class="about-card">
               <h3>Short bio</h3>
               <p>
-                I am a pharmacy student in China with a strong interest in
-                microbiology, bacteriophages and modern pharmaceutical practice.
-                At the same time I create online content about studying in China
-                and help students navigate scholarships and university life.
+                I am an international <strong>pharmacy student in China</strong>, building a foundation
+                in pharmaceutical sciences while exploring
+                <strong>neurodegenerative diseases, bacteriophage-based supplements</strong> and
+                evidence-based healthcare. I enjoy turning complex concepts into clear visual
+                explanations — posters, slides and now this website.
               </p>
               <p style="margin-top:6px;">
-                I enjoy turning complex scientific ideas into clear visuals,
-                posters and websites — so people without a scientific background
-                can still understand the core message.
+                Beyond the classroom, I share information about <strong>studying in China</strong>,
+                scholarships and student life, mainly for Uzbek-speaking students. My long-term goal
+                is to contribute to innovative therapies and to connect education, research and real
+                patients’ needs.
               </p>
             </div>
             <div class="about-card">
@@ -962,136 +986,204 @@
                 </div>
                 <div class="about-pill">
                   <span>Location</span>
-                  <strong>Nanjing / Online</strong>
+                  <strong>China (online worldwide)</strong>
                 </div>
                 <div class="about-pill">
                   <span>Languages</span>
                   <strong>Uzbek · English · Chinese</strong>
                 </div>
                 <div class="about-pill">
-                  <span>Focus</span>
-                  <strong>Bacteriophages & education</strong>
+                  <span>Interests</span>
+                  <strong>Alzheimer’s · bacteriophages</strong>
+                </div>
+                <div class="about-pill">
+                  <span>Content</span>
+                  <strong>Study in China, HSK, scholarships</strong>
+                </div>
+                <div class="about-pill">
+                  <span>Platforms</span>
+                  <strong>Telegram · WeChat · LinkedIn</strong>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Services -->
-        <section id="services">
+        <!-- Research -->
+        <section id="research">
           <div class="section-header">
             <div>
-              <div class="section-kicker">SERVICES</div>
-              <h2 class="section-title">How I can help you</h2>
+              <div class="section-kicker">RESEARCH & PROJECTS</div>
+              <div class="section-kicker-alt">
+                Tadqiqotlar · 科研项目
+              </div>
+              <h2 class="section-title">Selected research & initiatives</h2>
             </div>
             <p class="section-subtitle">
-              From simple “link-in-bio” pages to polished mini-sites for products,
-              research posters or education projects — all done with free hosting.
+              These projects reflect my main scientific interests so far — neurodegeneration,
+              bacteriophage-based products and technology for language & pharmacy education.
             </p>
           </div>
 
           <div class="cards-grid">
-            <article class="service-card">
-              <div class="service-icon">💻</div>
-              <h3>Personal & portfolio sites</h3>
+            <article class="card-simple">
+              <h3>Small molecules & Alzheimer’s disease</h3>
+              <p class="project-meta">
+                Exploring how small molecules and aggregation-induced emission (AIE) probes can help
+                monitor or modulate Aβ aggregation in Alzheimer’s disease models.
+              </p>
               <p>
-                Single-page or multi-section portfolio sites hosted on free
-                platforms like Netlify or GitHub Pages.
+                This work focuses on understanding molecular interactions and how chemical structure
+                relates to biological function, with the long-term goal of improving diagnosis and
+                potential therapeutic strategies.
               </p>
               <div class="pill-row">
-                <span class="chip">Responsive design</span>
-                <span class="chip">Fast & lightweight</span>
+                <span class="chip">Neurodegeneration</span>
+                <span class="chip">Aβ aggregation</span>
+                <span class="chip">AIE</span>
+              </div>
+              <div class="project-footer">
+                <span>Status: literature review & conceptual work</span>
+                <span class="link-inline">Poster-ready topic</span>
               </div>
             </article>
 
-            <article class="service-card">
-              <div class="service-icon">🧪</div>
-              <h3>Project & product pages</h3>
+            <article class="card-simple">
+              <h3>Bacteriophage-based supplement concepts</h3>
+              <p class="project-meta">
+                Conceptual and documentation work for bacteriophage-containing products aimed at
+                supporting microbiota balance and addressing selected bacterial strains.
+              </p>
               <p>
-                Simple, clear pages to present supplements, bacteriophage
-                products or research projects for conferences and partners.
+                I am particularly interested in how bacteriophages can be formulated as safe,
+                targeted supplements, and how to communicate their mechanisms clearly to both
+                healthcare professionals and patients.
               </p>
               <div class="pill-row">
-                <span class="chip">Structured sections</span>
-                <span class="chip">Science-friendly</span>
+                <span class="chip">Bacteriophages</span>
+                <span class="chip">Microbiota</span>
+                <span class="chip">Scientific communication</span>
+              </div>
+              <div class="project-footer">
+                <span>Status: early-stage & documentation</span>
+                <span class="link-inline">Presentation-friendly</span>
               </div>
             </article>
 
-            <article class="service-card">
-              <div class="service-icon">📚</div>
-              <h3>Study & scholarship pages</h3>
+            <article class="card-simple">
+              <h3>Educational content: study in China</h3>
+              <p class="project-meta">
+                Continuous content creation for students interested in scholarships, HSK and adapting
+                to academic life in China.
+              </p>
               <p>
-                Landing pages for consulting, study-in-China guidance or
-                Telegram channels — with clear calls to action.
+                Through Telegram and social platforms, I share practical advice on applications,
+                language learning and everyday life, aiming to make the path clearer for the next
+                generation of students.
               </p>
               <div class="pill-row">
-                <span class="chip">Funnel-ready</span>
-                <span class="chip">Multi-language</span>
+                <span class="chip">Scholarships</span>
+                <span class="chip">HSK & Chinese</span>
+                <span class="chip">Student guidance</span>
+              </div>
+              <div class="project-footer">
+                <span>Audience: Uzbek-speaking students</span>
+                <span class="link-inline">Ongoing project</span>
               </div>
             </article>
           </div>
         </section>
 
-        <!-- Projects -->
-        <section id="projects">
+        <!-- Skills -->
+        <section id="skills">
           <div class="section-header">
             <div>
-              <div class="section-kicker">PROJECTS</div>
-              <h2 class="section-title">Selected projects & ideas</h2>
+              <div class="section-kicker">SKILLS</div>
+              <div class="section-kicker-alt">
+                Ko‘nikmalar · 技能
+              </div>
+              <h2 class="section-title">What I’m building competence in</h2>
             </div>
             <p class="section-subtitle">
-              A few examples of the type of work I like to do. These can be real
-              or upcoming — feel free to replace everything with your own projects.
+              A mix of scientific, communication and digital skills that I am actively developing
+              through coursework, side projects and self-study.
             </p>
           </div>
 
-          <div class="cards-grid">
-            <article class="project-card">
-              <h3>Mediphage mini-site</h3>
-              <div class="project-meta">
-                Informational site structure for bacteriophage-based supplements with
-                clear indication, safety and FAQ sections.
-              </div>
+          <div class="two-col-grid">
+            <article class="card-simple">
+              <h3>Scientific & academic skills</h3>
+              <p>
+                Core competencies related to pharmacy and biomedical sciences, developed through
+                university coursework and project work.
+              </p>
               <div class="pill-row">
-                <span class="chip">Science copy</span>
-                <span class="chip">Clear layout</span>
-              </div>
-              <div class="project-footer">
-                <span>Ready to build</span>
-                <a href="#contact" class="link-inline">Let’s launch it →</a>
+                <span class="chip">Pharmaceutical sciences fundamentals</span>
+                <span class="chip">Basic laboratory techniques</span>
+                <span class="chip">Scientific reading & note-taking</span>
+                <span class="chip">Poster & slide preparation</span>
+                <span class="chip">Evidence-based thinking</span>
               </div>
             </article>
 
-            <article class="project-card">
-              <h3>“Study in China” landing</h3>
-              <div class="project-meta">
-                Simple funnel page to collect leads for scholarship consulting
-                with Telegram, WeChat and email entry points.
-              </div>
+            <article class="card-simple">
+              <h3>Communication & digital skills</h3>
+              <p>
+                Skills that help me explain complex topics, reach students and collaborate online
+                across cultures and time zones.
+              </p>
               <div class="pill-row">
-                <span class="chip">Lead capture</span>
-                <span class="chip">Student-focused</span>
-              </div>
-              <div class="project-footer">
-                <span>Concept & structure</span>
-                <a href="#contact" class="link-inline">Use for your brand →</a>
+                <span class="chip">Multilingual communication</span>
+                <span class="chip">Content writing (Uzbek/English/Chinese)</span>
+                <span class="chip">Basic web design & portfolio building</span>
+                <span class="chip">Presentation & public speaking</span>
+                <span class="chip">Social media for education</span>
               </div>
             </article>
+          </div>
+        </section>
 
-            <article class="project-card">
-              <h3>Research poster companion</h3>
-              <div class="project-meta">
-                A tiny website that mirrors the content of a scientific poster
-                (IPSAF, etc.) with extra figures, methods and links.
+        <!-- Awards -->
+        <section id="awards">
+          <div class="section-header">
+            <div>
+              <div class="section-kicker">ACHIEVEMENTS</div>
+              <div class="section-kicker-alt">
+                Yutuqlar · 成就
               </div>
-              <div class="pill-row">
-                <span class="chip">Conference-ready</span>
-                <span class="chip">QR code friendly</span>
-              </div>
-              <div class="project-footer">
-                <span>Poster + web pair</span>
-                <a href="#contact" class="link-inline">Create yours →</a>
-              </div>
+              <h2 class="section-title">Highlights & milestones</h2>
+            </div>
+            <p class="section-subtitle">
+              A selection of academic, competition and extracurricular milestones that have shaped my
+              development so far.
+            </p>
+          </div>
+
+          <div class="two-col-grid">
+            <article class="card-simple">
+              <h3>Academic & competition experience</h3>
+              <p>
+                I actively look for opportunities to test my skills, learn from others and present my
+                work in academic or competitive environments.
+              </p>
+              <ul style="margin-top:6px; padding-left:18px; font-size:13px; color:var(--muted);">
+                <li>Participation in international and national student forums.</li>
+                <li>Experience preparing research posters and abstracts.</li>
+                <li>Involvement in interdisciplinary projects linking AI, language and education.</li>
+              </ul>
+            </article>
+
+            <article class="card-simple">
+              <h3>Scholarships & leadership</h3>
+              <p>
+                Through consistent work and community involvement I aim to represent international
+                students positively and support others on a similar path.
+              </p>
+              <ul style="margin-top:6px; padding-left:18px; font-size:13px; color:var(--muted);">
+                <li>Scholarship-supported studies in China.</li>
+                <li>Guiding prospective students about applications and adaptation.</li>
+                <li>Building a small but engaged online community step by step.</li>
+              </ul>
             </article>
           </div>
         </section>
@@ -1101,28 +1193,31 @@
           <div class="section-header">
             <div>
               <div class="section-kicker">CONTACT</div>
-              <h2 class="section-title">Let’s build something together</h2>
+              <div class="section-kicker-alt">
+                Bog‘lanish · 联系方式
+              </div>
+              <h2 class="section-title">Let’s get in touch</h2>
             </div>
             <p class="section-subtitle">
-              Tell me what kind of website you need — portfolio, product, study
-              page or something else — and I’ll structure it to work on free hosting.
+              Whether you are a student, researcher, teacher or potential collaborator, feel free to
+              reach out. I am open to new projects, guidance requests and constructive feedback.
             </p>
           </div>
 
           <div class="contact-grid">
             <form
               class="contact-form"
-              action="mailto:your-email@example.com"
+              action="mailto:rakhmatullokh.kh@gmail.com"
               method="post"
               enctype="text/plain"
             >
               <div class="form-row">
                 <div class="form-group">
-                  <label for="name">Name</label>
+                  <label for="name">Name / Ism / 姓名</label>
                   <input id="name" name="Name" type="text" placeholder="Your name" required />
                 </div>
                 <div class="form-group">
-                  <label for="email">Email</label>
+                  <label for="email">Email / Elektron pochta</label>
                   <input
                     id="email"
                     name="Email"
@@ -1133,28 +1228,28 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="type">Project type</label>
+                <label for="topic">Topic / Mavzu</label>
                 <input
-                  id="type"
-                  name="Project type"
+                  id="topic"
+                  name="Topic"
                   type="text"
-                  placeholder="Portfolio, product page, study page, etc."
+                  placeholder="Research, studying in China, collaboration, etc."
                 />
               </div>
               <div class="form-group">
-                <label for="message">What do you have in mind?</label>
+                <label for="message">Message / Xabar / 留言</label>
                 <textarea
                   id="message"
                   name="Message"
-                  placeholder="Briefly describe your idea, timeline and any links you already have."
+                  placeholder="You can write in English, Uzbek or Chinese."
                 ></textarea>
               </div>
               <button class="btn-primary" type="submit">
-                Send message via email →
+                Send email →
               </button>
               <p class="hero-note" style="margin-top:8px;">
-                This form uses a simple <strong>mailto:</strong> link so you
-                don’t need any paid server or backend.
+                This form uses a simple <strong>mailto:</strong> link — no server or paid hosting is
+                required.
               </p>
             </form>
 
@@ -1162,29 +1257,31 @@
               <div class="contact-info-item">
                 <div class="contact-info-label">DIRECT CONTACT</div>
                 <div class="contact-info-value">
-                  Email: <strong>your-email@example.com</strong><br />
-                  Telegram / WeChat: <strong>@yourhandle</strong>
+                  Email: <strong>rakhmatullokh.kh@gmail.com</strong><br />
+                  Telegram: <strong>@rakhmatullokh_kh</strong><br />
+                  WeChat: <strong>rakhmatullokh_kh</strong>
                 </div>
               </div>
               <div class="contact-info-item">
-                <div class="contact-info-label">TIME ZONE</div>
+                <div class="contact-info-label">PROFESSIONAL LINKS</div>
                 <div class="contact-info-value">
-                  Based in Asia, open to fully remote collaborations.
+                  LinkedIn:
+                  <a
+                    href="https://www.linkedin.com/in/rakhmatulloh-kakhramonov-9a0641228"
+                    class="link-inline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View profile ↗
+                  </a>
                 </div>
               </div>
               <div class="contact-info-item">
-                <div class="contact-info-label">SOCIAL</div>
-                <div class="social-row">
-                  <span class="social-pill">Telegram channel: Xitoyda Hayot</span>
-                  <span class="social-pill">Instagram: @yourusername</span>
-                  <span class="social-pill">LinkedIn: Your Name</span>
-                </div>
-              </div>
-              <div class="contact-info-item">
-                <div class="contact-info-label">NOTE</div>
+                <div class="contact-info-label">LANGUAGE NOTE</div>
                 <div class="contact-info-value">
-                  I’m building my career step by step — if you’re also a student or
-                  early-stage founder, I’d love to collaborate and grow together.
+                  You can contact me in
+                  <strong>Uzbek, English or Chinese (中文)</strong>. I am always happy to learn and
+                  improve through collaboration.
                 </div>
               </div>
             </aside>
@@ -1193,8 +1290,8 @@
 
         <!-- Footer -->
         <footer>
-          <span>© <strong>Your Name</strong> — All rights reserved.</span>
-          <span>Built with HTML &amp; CSS, hosted for free.</span>
+          <span>© <strong>Rakhmatullokh Kakhramonov (李强)</strong> — All rights reserved.</span>
+          <span>Portfolio built with HTML &amp; CSS · Hosted on GitHub Pages.</span>
         </footer>
       </div>
     </div>
