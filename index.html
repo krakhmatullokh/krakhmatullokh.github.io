@@ -1354,8 +1354,18 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+const backToTop = document.getElementById("backToTop");
 
-    
+window.addEventListener("scroll", () => {
+  if (!backToTop) return;
+  backToTop.style.display = window.scrollY > 400 ? "block" : "none";
+});
+
+if (backToTop) {
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
   </script>
   <button id="backToTop" title="Back to top">↑</button>
 </body>
